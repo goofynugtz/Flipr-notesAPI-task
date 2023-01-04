@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3-slim
 
 ENV PYTHONUNBUFFERED 1
 
@@ -11,3 +11,5 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 COPY . /
+
+HEALTHCHECK CMD curl -f http://localhost:8000/api || exit 1
